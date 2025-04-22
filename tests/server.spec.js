@@ -37,4 +37,13 @@ describe('server/app.js', function() {
       done();
     });
   });
+  it('should have a h1 tag', (done) => {
+    chai.request(server)
+      .get('/')
+      .end((err, res) => {
+        expect(err).not.exist;
+        expect(res.text).to.contain('<h1>Hello World</h1>');
+        done();
+      });
+  });
 })
