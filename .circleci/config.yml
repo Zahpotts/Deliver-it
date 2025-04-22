@@ -1,16 +1,17 @@
-ersion: 2.1
+version: 2.1
 
 jobs:
   preview_deployment:
     docker:
-      - image: cimg/node:20.11  
+      - image: cimg/node:20.11  # Use CircleCI's next-gen Node image
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
+      VERCEL_TOKEN: $VERCEL_TOKEN
     steps:
       - checkout
 
-      # Install project dependencies
+      # Install dependencies
       - run:
           name: Install dependencies
           command: npm install
@@ -36,10 +37,11 @@ jobs:
     environment:
       VERCEL_ORG_ID: $VERCEL_ORG_ID
       VERCEL_PROJECT_ID: $VERCEL_PROJECT_ID
+      VERCEL_TOKEN: $VERCEL_TOKEN
     steps:
       - checkout
 
-      # Install project dependencies
+      # Install dependencies
       - run:
           name: Install dependencies
           command: npm install
